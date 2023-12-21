@@ -8,8 +8,9 @@ import jakarta.validation.constraints.AssertTrue
 object SearchDto {
     enum class Sorting {
         accuracy,
-        recency
+        recency,
     }
+
     data class CreateUserReq(
         val nickname: String,
     )

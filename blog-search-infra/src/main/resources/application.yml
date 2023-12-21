@@ -46,5 +46,7 @@ resilience4j:
         baseConfig: default
 
 
-iamport:
-  base-url: "test"
+kakao:
+  base-url: "https://dapi.kakao.com"
+  rest-api-key: 01debab51ed65e812683a3abecdea53e
+

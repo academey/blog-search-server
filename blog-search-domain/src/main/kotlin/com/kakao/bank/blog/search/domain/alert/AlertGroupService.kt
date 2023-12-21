@@ -38,11 +38,12 @@ class AlertGroupService(
 
         return alertGroupUserRepository.save(
             com.kakao.bank.blog.search.domain.alert.AlertGroupUser(
-                user = userRepository.findByIdOrNull(userId)
-                    ?: throw CustomExceptions.NotFoundException("Not Found userId = $userId"),
+                user =
+                    userRepository.findByIdOrNull(userId)
+                        ?: throw CustomExceptions.NotFoundException("Not Found userId = $userId"),
                 alertGroup =
-                alertGroupRepository.findByIdOrNull(alertGroupId)
-                    ?: throw CustomExceptions.NotFoundException("Not Found alertGroupId = $alertGroupId"),
+                    alertGroupRepository.findByIdOrNull(alertGroupId)
+                        ?: throw CustomExceptions.NotFoundException("Not Found alertGroupId = $alertGroupId"),
             ),
         )
     }

@@ -11,8 +11,7 @@ class SearchService(
         keyword: String,
         sort: Sorting,
         pageable: Pageable,
-    ): Unit {
-
+    ) {
 //        if (userRepository.findByNickname(nickname) != null) {
 //            throw CustomExceptions.AlreadyExistException(
 //                "Already Exist nickname = $nickname",
