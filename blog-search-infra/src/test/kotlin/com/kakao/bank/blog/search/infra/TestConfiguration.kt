@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 @SpringBootApplication(scanBasePackages = ["com.kakao.bank.blog.search.infra"])
 class TestConfiguration {
     @Test
-    fun hi()  {
+    fun hi() {
         println("test")
     }
 }

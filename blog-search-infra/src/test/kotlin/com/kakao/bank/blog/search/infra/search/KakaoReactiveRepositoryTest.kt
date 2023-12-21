@@ -19,12 +19,14 @@ class KakaoReactiveRepositoryTest(
         fun `When ~~ `() {
             runBlocking {
                 run {
-                    kakaoReactiveRepository.search(
-                        keyword = "Test",
-                        sort = Sorting.정확도순,
-                        page = 1,
-                        size = 10,
-                    )
+                    val blogList =
+                        kakaoReactiveRepository.search(
+                            keyword = "Test",
+                            sort = Sorting.정확도순,
+                            page = 1,
+                            size = 10,
+                        )
+                    println(blogList)
                 }
             }
         }

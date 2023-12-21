@@ -1,5 +1,6 @@
 package com.kakao.bank.blog.search.domain.search
 
+import com.kakao.bank.blog.search.domain.blog.Blog
 import kotlinx.coroutines.runBlocking
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
@@ -12,15 +13,16 @@ class RealtimeSearchService(
         keyword: String,
         sort: Sorting,
         pageable: Pageable,
-    ) = runBlocking {
-        searchRepositories.sortedBy { it.getPriority() }.forEach { searchRepository ->
-            searchRepository.search(
-                keyword = keyword,
-                sort = sort,
-                page = pageable.pageNumber,
-                size = pageable.pageSize,
-            )
-
+    ): List<Blog> =
+        runBlocking {
+            searchRepositories.sortedBy { it.getPriority() }.forEach { searchRepository ->
+                return@runBlocking searchRepository.search(
+                    keyword = keyword,
+                    sort = sort,
+                    page = pageable.pageNumber,
+                    size = pageable.pageSize,
+                )
+            }
+            throw Exception("")
         }
-    }
 }

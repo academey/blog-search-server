@@ -18,6 +18,7 @@ dependencies {
     implementation("org.apache.commons:commons-text")
     implementation(project(":blog-search-utils"))
     implementation(project(":blog-search-service"))
+    implementation(project(":blog-search-infra"))
     implementation(project(":blog-search-domain"))
 }
 
