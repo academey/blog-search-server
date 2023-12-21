@@ -20,7 +20,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
     implementation("org.springframework.boot:spring-boot-starter-amqp")
 
-    implementation(project(":alert-domain"))
-    implementation(project(":alert-utils"))
+    implementation(project(":blog-search-domain"))
+    implementation(project(":blog-search-utils"))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

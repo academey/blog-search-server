@@ -10,5 +10,5 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.7.0"
 }
 
-rootProject.name = "alert-server"
-include("alert-api", "alert-domain", "alert-infra", "alert-utils")
+rootProject.name = "blog-search-server"
+include("blog-search-api", "blog-search-domain", "blog-search-infra", "blog-search-utils")

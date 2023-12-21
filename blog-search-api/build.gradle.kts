@@ -16,9 +16,9 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
     implementation("org.apache.commons:commons-text")
-    implementation(project(":alert-utils"))
-    implementation(project(":alert-domain"))
-    implementation(project(":alert-infra"))
+    implementation(project(":blog-search-utils"))
+    implementation(project(":blog-search-domain"))
+    implementation(project(":blog-search-infra"))
 }
 
 tasks.withType<KotlinCompile> {

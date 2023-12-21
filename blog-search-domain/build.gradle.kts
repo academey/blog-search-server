@@ -23,7 +23,7 @@ dependencies {
     implementation("com.h2database:h2")
     implementation("org.springframework.boot:spring-boot-devtools")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    implementation(project(":alert-utils"))
+    implementation(project(":blog-search-utils"))
 }
 
 allOpen {
