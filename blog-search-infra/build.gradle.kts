@@ -10,6 +10,7 @@ plugins {
     kotlin("plugin.spring") version "1.9.20"
 }
 dependencies {
+    implementation("io.github.resilience4j:resilience4j-spring-boot2:2.1.0")
     implementation("com.fasterxml.jackson.core:jackson-core:2.16.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.16.0")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.16.0")

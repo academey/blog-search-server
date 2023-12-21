@@ -30,7 +30,7 @@ object SearchDto {
                     title = blog.title,
                     contents = blog.contents,
                     url = blog.url,
-                    blogname = blog.blogname,
+                    blogname = blog.blogName,
                     thumbnail = blog.thumbnail,
                     datetime = blog.datetime,
                 )

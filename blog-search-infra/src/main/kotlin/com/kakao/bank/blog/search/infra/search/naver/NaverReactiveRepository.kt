@@ -1,4 +1,4 @@
-package com.kakao.bank.blog.search.infra.search.kakao
+package com.kakao.bank.blog.search.infra.search.naver
 
 import com.kakao.bank.blog.search.domain.blog.Blog
 import com.kakao.bank.blog.search.domain.blog.BlogVendorType
@@ -11,19 +11,19 @@ import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.awaitBody
 
 @Repository
-class KakaoReactiveRepository(
-    private val kakaoWebClient: WebClient,
+class NaverReactiveRepository(
+    private val naverWebClient: WebClient,
 ) : SearchRepository {
     enum class Sort {
-        accuracy,
-        recency,
+        sim,
+        date,
         ;
 
         companion object {
             fun of(sort: Sorting): Sort =
                 when (sort) {
-                    정확도순 -> accuracy
-                    최신순 -> recency
+                    정확도순 -> sim
+                    최신순 -> date
                 }
         }
     }
@@ -35,18 +35,36 @@ class KakaoReactiveRepository(
         page: Int,
         size: Int,
     ): List<Blog> =
-        kakaoWebClient.get()
+        naverWebClient.get()
             .uri { uriBuilder ->
-                uriBuilder.path("/v2/search/blog")
+                uriBuilder.path("/v1/search/blog.json")
                     .queryParam("query", keyword)
                     .queryParam("sort", Sort.of(sort))
-                    .queryParam("page", page)
-                    .queryParam("size", size)
+                    .queryParam("start", page)
+                    .queryParam("display", size)
                     .build()
             }
             .retrieve()
-            .awaitBody<KakaoSearchBlogResult>()
+            .awaitBody<NaverSearchBlogResult>()
             .getBlogs()
+
+    suspend fun searchTest(
+        keyword: String,
+        sort: Sorting,
+        page: Int,
+        size: Int,
+    ): String =
+        naverWebClient.get()
+            .uri { uriBuilder ->
+                uriBuilder.path("/v1/search/blog.json")
+                    .queryParam("query", keyword)
+                    .queryParam("sort", Sort.of(sort))
+                    .queryParam("start", page)
+                    .queryParam("display", size)
+                    .build()
+            }
+            .retrieve()
+            .awaitBody<String>()
 
     override fun getPriority(): Int = BlogVendorType.Kakao.priority
 }

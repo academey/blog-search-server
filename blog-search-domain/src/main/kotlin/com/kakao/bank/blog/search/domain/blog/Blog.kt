@@ -4,8 +4,7 @@ data class Blog(
     val title: String,
     val contents: String,
     val url: String,
-    val blogname: String,
-    val thumbnail: String,
+    val blogName: String,
     val datetime: String,
     val blogVendorType: BlogVendorType,
 )
