@@ -17,8 +17,8 @@ dependencies {
 
     implementation("org.apache.commons:commons-text")
     implementation(project(":blog-search-utils"))
+    implementation(project(":blog-search-service"))
     implementation(project(":blog-search-domain"))
-    implementation(project(":blog-search-infra"))
 }
 
 tasks.withType<KotlinCompile> {

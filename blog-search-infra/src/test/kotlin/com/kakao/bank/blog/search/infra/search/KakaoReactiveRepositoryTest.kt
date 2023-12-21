@@ -1,5 +1,6 @@
 package com.kakao.bank.blog.search.infra.search
 
+import com.kakao.bank.blog.search.domain.search.Sorting
 import com.kakao.bank.blog.search.infra.search.kakao.KakaoReactiveRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Nested

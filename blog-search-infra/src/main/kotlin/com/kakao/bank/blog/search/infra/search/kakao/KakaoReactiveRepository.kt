@@ -1,7 +1,10 @@
 package com.kakao.bank.blog.search.infra.search.kakao
 
-import com.kakao.bank.blog.search.infra.search.Sorting
-import com.kakao.bank.blog.search.infra.search.Sorting.*
+import com.kakao.bank.blog.search.domain.search.SearchRepository
+import com.kakao.bank.blog.search.domain.search.SearchVendorType
+import com.kakao.bank.blog.search.domain.search.Sorting
+import com.kakao.bank.blog.search.domain.search.Sorting.*
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Repository
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.awaitBody
@@ -9,7 +12,7 @@ import org.springframework.web.reactive.function.client.awaitBody
 @Repository
 class KakaoReactiveRepository(
     private val kakaoWebClient: WebClient,
-) {
+): SearchRepository {
     enum class Sort {
         accuracy,
         recency,
@@ -24,11 +27,11 @@ class KakaoReactiveRepository(
         }
     }
 
-    suspend fun search(
+    override suspend fun search(
         keyword: String,
         sort: Sorting,
-        page: Long,
-        size: Long,
+        page: Int,
+        size: Int,
     ) {
         val retrieve =
             kakaoWebClient.get()
@@ -44,4 +47,6 @@ class KakaoReactiveRepository(
                 .awaitBody<String>()
         print(retrieve)
     }
+
+    override fun getPriority(): Int = SearchVendorType.Kakao.priority
 }
