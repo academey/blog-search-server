@@ -11,4 +11,4 @@ plugins {
 }
 
 rootProject.name = "blog-search-server"
-include("blog-search-api", "blog-search-domain", "blog-search-infra", "blog-search-utils")
+include("blog-search-api", "blog-search-domain", "blog-search-service", "blog-search-infra", "blog-search-utils")

@@ -15,6 +15,11 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.16.0")
     implementation("com.bucket4j:bucket4j-redis:8.7.0")
     implementation("com.bucket4j:bucket4j-core:8.7.0")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+
 
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")

@@ -9,8 +9,8 @@ import org.springframework.boot.runApplication
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
 @EntityScan(basePackages = ["com.kakao.bank.blog.search.domain"])
-@EnableJpaRepositories(basePackages = ["com.kakao.bank.blog.search.domain"])
-@SpringBootApplication(scanBasePackages = ["com.kakao.bank.alert"])
+@EnableJpaRepositories(basePackages = ["com.kakao.bank.blog.search"])
+@SpringBootApplication(scanBasePackages = ["com.kakao.bank.blog"])
 class Application
 
 fun main(args: Array<String>) {
