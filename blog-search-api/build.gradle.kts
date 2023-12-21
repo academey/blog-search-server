@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("com.kakao.bank.alert.server.kotlin-application-conventions")
+    id("com.kakao.bank.blog.search.kotlin-application-conventions")
 
     id("org.springframework.boot") version "3.2.0"
     id("io.spring.dependency-management") version "1.1.4"

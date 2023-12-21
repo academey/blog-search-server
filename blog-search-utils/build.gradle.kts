@@ -3,5 +3,5 @@
  */
 
 plugins {
-    id("com.kakao.bank.alert.server.kotlin-library-conventions")
+    id("com.kakao.bank.blog.search.kotlin-library-conventions")
 }
