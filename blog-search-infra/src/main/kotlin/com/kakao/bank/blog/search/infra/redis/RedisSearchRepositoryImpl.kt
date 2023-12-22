@@ -12,12 +12,12 @@ class RedisSearchRepositoryImpl(
 ) : RedisSearchRepository {
     override fun update(
         keyword: String,
-        sort: Sorting,
+        sorting: Sorting,
         page: Int,
         size: Int,
         blogList: List<Blog>,
     ) {
-        val hashCode = getHashCode(keyword, sort, page, size)
+        val hashCode = getHashCode(keyword, sorting, page, size)
         val opsForList = redisTemplate.opsForHash<Int, List<Blog>>()
 
         return opsForList.put(POPULAR_SEARCH_REDIS_KEY, hashCode, blogList)
@@ -25,11 +25,11 @@ class RedisSearchRepositoryImpl(
 
     override fun get(
         keyword: String,
-        sort: Sorting,
+        sorting: Sorting,
         page: Int,
         size: Int,
     ): List<Blog>? {
-        val hashCode = getHashCode(keyword, sort, page, size)
+        val hashCode = getHashCode(keyword, sorting, page, size)
         val opsForList = redisTemplate.opsForHash<Int, List<Blog>>()
 
         return opsForList.get(POPULAR_SEARCH_REDIS_KEY, hashCode)

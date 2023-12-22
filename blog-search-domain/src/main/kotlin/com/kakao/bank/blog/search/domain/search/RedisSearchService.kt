@@ -15,7 +15,7 @@ class RedisSearchService(
     ): List<Blog>? =
         redisSearchRepository.get(
             keyword = keyword,
-            sort = sort,
+            sorting = sort,
             page = pageable.pageNumber,
             size = pageable.pageSize,
         )
@@ -27,7 +27,7 @@ class RedisSearchService(
         blogList: List<Blog>,
     ) = redisSearchRepository.update(
         keyword = keyword,
-        sort = sort,
+        sorting = sort,
         page = pageable.pageNumber,
         size = pageable.pageSize,
         blogList = blogList,

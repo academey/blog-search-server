@@ -21,7 +21,7 @@ class RedisSearchRepositoryImplTest(
             val result =
                 redisSearchRepositoryImpl.get(
                     keyword = "Test",
-                    sort = Sorting.최신순,
+                    sorting = Sorting.최신순,
                     size = 3,
                     page = 3,
                 )
@@ -47,7 +47,7 @@ class RedisSearchRepositoryImplTest(
             val result =
                 redisSearchRepositoryImpl.update(
                     keyword = "Test",
-                    sort = Sorting.최신순,
+                    sorting = Sorting.최신순,
                     size = 3,
                     page = 3,
                     blogList = blogList,

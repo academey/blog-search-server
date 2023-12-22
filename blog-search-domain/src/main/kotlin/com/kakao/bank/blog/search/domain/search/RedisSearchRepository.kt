@@ -5,7 +5,7 @@ import com.kakao.bank.blog.search.domain.blog.Blog
 interface RedisSearchRepository {
     fun update(
         keyword: String,
-        sort: Sorting,
+        sorting: Sorting,
         page: Int,
         size: Int,
         blogList: List<Blog>,
@@ -13,7 +13,7 @@ interface RedisSearchRepository {
 
     fun get(
         keyword: String,
-        sort: Sorting,
+        sorting: Sorting,
         page: Int,
         size: Int,
     ): List<Blog>?
