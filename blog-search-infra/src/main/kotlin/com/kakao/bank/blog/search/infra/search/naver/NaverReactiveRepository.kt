@@ -2,7 +2,7 @@ package com.kakao.bank.blog.search.infra.search.naver
 
 import com.kakao.bank.blog.search.domain.blog.Blog
 import com.kakao.bank.blog.search.domain.blog.BlogVendorType
-import com.kakao.bank.blog.search.domain.search.SearchRepository
+import com.kakao.bank.blog.search.domain.search.RealtimeSearchRepository
 import com.kakao.bank.blog.search.domain.search.Sorting
 import com.kakao.bank.blog.search.domain.search.Sorting.*
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker
@@ -13,7 +13,7 @@ import org.springframework.web.reactive.function.client.awaitBody
 @Repository
 class NaverReactiveRepository(
     private val naverWebClient: WebClient,
-) : SearchRepository {
+) : RealtimeSearchRepository {
     enum class Sort {
         sim,
         date,

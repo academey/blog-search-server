@@ -17,8 +17,8 @@ class BlogApiController(
     @GetMapping
     fun search(
         @RequestParam keyword: String,
-        @RequestParam sort: SearchDto.SortingParam,
-        pageable: Pageable,
+        @RequestParam sort: SearchDto.SortingParam = SearchDto.SortingParam.accuracy,
+        pageable: Pageable = Pageable.ofSize(10),
     ): ApiResponse<List<SearchDto.BlogResponse>> {
         return ApiResponse.createSuccess(
             searchService.search(
@@ -26,6 +26,17 @@ class BlogApiController(
                 sort = sort.toDomain(),
                 pageable = pageable,
             ).map { SearchDto.BlogResponse.of(it) },
+        )
+    }
+
+    @GetMapping("/popular-keywords")
+    fun getPopularSearchKeywords(
+        @RequestParam size: Long = 10,
+    ): ApiResponse<List<SearchDto.PopularSearchKeywordResponse>> {
+        return ApiResponse.createSuccess(
+            searchService.getPopularSearchKeywords(
+                size,
+            ).map { SearchDto.PopularSearchKeywordResponse.of(it) },
         )
     }
 }

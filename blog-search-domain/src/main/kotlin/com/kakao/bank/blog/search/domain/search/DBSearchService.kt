@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 
 @Service
-class RealtimeSearchService(
+class DBSearchService(
     private val searchRepositories: List<RealtimeSearchRepository>,
 ) {
     fun search(

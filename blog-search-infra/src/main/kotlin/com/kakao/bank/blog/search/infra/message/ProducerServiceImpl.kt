@@ -12,6 +12,6 @@ class ProducerServiceImpl(
 ) : ProducerService {
     override fun sendMessage(messageDto: MessageDto) {
         val objectToJSON: String = jacksonObjectMapper().writeValueAsString(messageDto)
-        rabbitTemplate.convertAndSend("queue-01", objectToJSON)
+//        rabbitTemplate.convertAndSend("queue-01", objectToJSON)
     }
 }

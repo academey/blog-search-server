@@ -1,6 +1,7 @@
 package com.kakao.bank.blog.search.api.controllers.dto
 
 import com.kakao.bank.blog.search.domain.blog.Blog
+import com.kakao.bank.blog.search.domain.blog.PopularSearchKeyword
 import com.kakao.bank.blog.search.domain.search.Sorting
 
 object SearchDto {
@@ -21,7 +22,6 @@ object SearchDto {
         val contents: String,
         val url: String,
         val blogname: String,
-        val thumbnail: String,
         val datetime: String,
     ) {
         companion object {
@@ -31,8 +31,20 @@ object SearchDto {
                     contents = blog.contents,
                     url = blog.url,
                     blogname = blog.blogName,
-                    thumbnail = blog.thumbnail,
                     datetime = blog.datetime,
+                )
+        }
+    }
+
+    data class PopularSearchKeywordResponse(
+        val keyword: String,
+        val count: Int,
+    ) {
+        companion object {
+            fun of(popularSearchKeyword: PopularSearchKeyword) =
+                PopularSearchKeywordResponse(
+                    keyword = popularSearchKeyword.keyword,
+                    count = popularSearchKeyword.count,
                 )
         }
     }
