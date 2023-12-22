@@ -17,11 +17,6 @@ import kotlin.properties.Delegates
 @Configuration
 @ConfigurationProperties(prefix = "spring.data.redis")
 class RedisConfiguration() {
-//    @Value("\${spring.data.redis.host}")
-//    private lateinit var host: String
-//
-//    @Value(" \${spring.data.redis.port}")
-//    private val port = 0
     lateinit var host: String
     var port by Delegates.notNull<Int>()
 

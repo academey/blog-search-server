@@ -14,7 +14,7 @@ class PopularSearchKeywordRepositoryImpl(
     PopularSearchKeywordRepository {
     override fun get(size: Long): List<PopularSearchKeyword> {
         val zSetOperations: ZSetOperations<String, String> = redisTemplate.opsForZSet()
-        val typedTuples = zSetOperations.reverseRangeWithScores(POPULAR_SEARCH_REDIS_KEY, 0, size)
+        val typedTuples = zSetOperations.reverseRangeWithScores(POPULAR_SEARCH_REDIS_KEY, 0, size - 1)
 
         return typedTuples!!.stream().map {
             PopularSearchKeyword(

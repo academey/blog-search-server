@@ -21,7 +21,7 @@ object SearchDto {
         val title: String,
         val contents: String,
         val url: String,
-        val blogname: String,
+        val blogName: String,
         val datetime: String,
     ) {
         companion object {
@@ -30,7 +30,7 @@ object SearchDto {
                     title = blog.title,
                     contents = blog.contents,
                     url = blog.url,
-                    blogname = blog.blogName,
+                    blogName = blog.blogName,
                     datetime = blog.datetime,
                 )
         }

@@ -1,7 +1,7 @@
 package com.kakao.bank.blog.search.domain.configuration
 
-import com.kakao.bank.blog.search.domain.user.User
-import com.kakao.bank.blog.search.domain.user.UserRepository
+import com.kakao.bank.blog.search.domain.search.SearchResult
+import com.kakao.bank.blog.search.domain.search.SearchResultRepository
 import org.springframework.boot.autoconfigure.domain.EntityScan
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -17,12 +17,12 @@ import java.util.Optional
 )
 @EntityScan(
     basePackageClasses = [
-        User::class,
+        SearchResult::class,
     ],
 )
 @EnableJpaRepositories(
     basePackageClasses = [
-        UserRepository::class,
+        SearchResultRepository::class,
     ],
 )
 class JpaConfiguration {
