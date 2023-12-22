@@ -14,7 +14,6 @@ dependencies {
     api("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("io.github.resilience4j:resilience4j-spring-boot2:2.1.0")
     implementation("org.springframework.boot:spring-boot-starter-aop")
-    implementation("org.springframework.boot:spring-boot-starter-amqp")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 

@@ -23,11 +23,6 @@ spring:
     redis:
       host: localhost
       port: 6379
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: admin
-    password: rabbitpassword
 
 resilience4j:
   circuitbreaker:
@@ -41,9 +36,6 @@ resilience4j:
         waitDurationInOpenState: 5s
         failureRateThreshold: 50
         eventConsumerBufferSize: 10
-    instances:
-      orderService:
-        baseConfig: default
 
 
 kakao:
