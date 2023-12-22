@@ -23,7 +23,7 @@ class BlogApiController(
         return ApiResponse.createSuccess(
             searchService.search(
                 keyword = keyword,
-                sort = sort.toDomain(),
+                sorting = sort.toDomain(),
                 pageable = pageable,
             ).map { SearchDto.BlogResponse.of(it) },
         )

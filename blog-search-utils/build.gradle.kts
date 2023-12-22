@@ -5,3 +5,8 @@
 plugins {
     id("com.kakao.bank.blog.search.kotlin-library-conventions")
 }
+
+dependencies {
+    implementation("com.fasterxml.jackson.core:jackson-core:2.16.0")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.16.0")
+}

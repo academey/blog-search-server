@@ -1,6 +1,7 @@
 package com.kakao.bank.blog.search.domain.search
 
 import com.kakao.bank.blog.search.domain.blog.Blog
+import com.kakao.bank.blog.search.utils.CustomExceptions
 import kotlinx.coroutines.runBlocking
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
@@ -23,6 +24,6 @@ class RealtimeSearchService(
                     size = pageable.pageSize,
                 )
             }
-            throw Exception("")
+            throw CustomExceptions.ApiException("둘다 실패")
         }
 }

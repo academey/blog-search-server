@@ -13,9 +13,8 @@ class PopularSearchKeywordRepositoryImpl(
 ) :
     PopularSearchKeywordRepository {
     override fun get(size: Long): List<PopularSearchKeyword> {
-        val key = POPULAR_SEARCH_REDIS_KEY
         val zSetOperations: ZSetOperations<String, String> = redisTemplate.opsForZSet()
-        val typedTuples = zSetOperations.reverseRangeWithScores(key, 0, size)
+        val typedTuples = zSetOperations.reverseRangeWithScores(POPULAR_SEARCH_REDIS_KEY, 0, size)
 
         return typedTuples!!.stream().map {
             PopularSearchKeyword(
@@ -25,7 +24,7 @@ class PopularSearchKeywordRepositoryImpl(
         }.collect(Collectors.toList())
     }
 
-    override fun update(keyword: String) {
+    override suspend fun update(keyword: String) {
         val score = 0.0
         redisTemplate.opsForZSet().incrementScore(POPULAR_SEARCH_REDIS_KEY, keyword, 1.0)
         redisTemplate.opsForZSet().incrementScore(POPULAR_SEARCH_REDIS_KEY, keyword, score)

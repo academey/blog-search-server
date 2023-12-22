@@ -5,7 +5,6 @@ import com.kakao.bank.blog.search.domain.blog.BlogVendorType
 import com.kakao.bank.blog.search.domain.search.RealtimeSearchRepository
 import com.kakao.bank.blog.search.domain.search.Sorting
 import com.kakao.bank.blog.search.domain.search.Sorting.*
-import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker
 import org.springframework.stereotype.Repository
 import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.awaitBody
@@ -28,7 +27,6 @@ class NaverReactiveRepository(
         }
     }
 
-    @CircuitBreaker(name = "alertService:notify", fallbackMethod = "fallback")
     override suspend fun search(
         keyword: String,
         sort: Sorting,
@@ -66,5 +64,5 @@ class NaverReactiveRepository(
             .retrieve()
             .awaitBody<String>()
 
-    override fun getPriority(): Int = BlogVendorType.Kakao.priority
+    override fun getPriority(): Int = BlogVendorType.Naver.priority
 }
