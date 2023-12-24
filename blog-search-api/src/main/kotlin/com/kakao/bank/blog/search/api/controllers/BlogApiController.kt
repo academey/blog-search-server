@@ -19,7 +19,7 @@ class BlogApiController(
     fun search(
         @RequestParam keyword: String,
         @RequestParam sort: SearchDto.SortingParam = SearchDto.SortingParam.accuracy,
-        pageable: Pageable = PageRequest.of(1, 10)
+        pageable: Pageable = PageRequest.of(1, 10),
     ): ApiResponse<List<SearchDto.BlogResponse>> {
         return ApiResponse.createSuccess(
             searchService.search(

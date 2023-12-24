@@ -1,7 +1,7 @@
 package com.kakao.bank.blog.search.infra.search
 
 import com.kakao.bank.blog.search.domain.search.Sorting
-import com.kakao.bank.blog.search.infra.search.kakao.KakaoReactiveRepository
+import com.kakao.bank.blog.search.infra.search.kakao.KakaoRealtimeSearchRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -11,7 +11,7 @@ import org.springframework.test.context.TestConstructor
 @SpringBootTest
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 class KakaoReactiveRepositoryTest(
-    private val kakaoReactiveRepository: KakaoReactiveRepository,
+    private val kakaoReactiveRepository: KakaoRealtimeSearchRepository,
 ) {
     @Nested
     inner class Search() {
@@ -22,7 +22,7 @@ class KakaoReactiveRepositoryTest(
                     val blogList =
                         kakaoReactiveRepository.search(
                             keyword = "Test",
-                            sort = Sorting.정확도순,
+                            sorting = Sorting.정확도순,
                             page = 1,
                             size = 10,
                         )

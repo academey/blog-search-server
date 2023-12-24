@@ -10,7 +10,7 @@ import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.awaitBody
 
 @Repository
-class NaverReactiveRepository(
+class NaverRealtimeSearchRepository(
     private val naverWebClient: WebClient,
 ) : RealtimeSearchRepository {
     enum class Sort {

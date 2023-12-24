@@ -12,7 +12,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Service
@@ -34,6 +33,8 @@ class SearchService(
                 popularSearchKeywordRepository.update(keyword)
             }
 
+            // 해당 부분을 Cachable 로 빼내고 싶었지만 object 를 serialize 하는 과정을 실패했다.
+            // 추후에는 Cachable로 AOP를 개선하자
             val redisBlogList =
                 redisSearchService.get(
                     keyword,

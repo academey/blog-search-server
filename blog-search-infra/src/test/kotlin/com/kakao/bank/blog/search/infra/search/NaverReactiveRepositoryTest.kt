@@ -1,7 +1,7 @@
 package com.kakao.bank.blog.search.infra.search
 
 import com.kakao.bank.blog.search.domain.search.Sorting
-import com.kakao.bank.blog.search.infra.search.naver.NaverReactiveRepository
+import com.kakao.bank.blog.search.infra.search.naver.NaverRealtimeSearchRepository
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
@@ -11,7 +11,7 @@ import org.springframework.test.context.TestConstructor
 @SpringBootTest
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 class NaverReactiveRepositoryTest(
-    private val naverReactiveRepository: NaverReactiveRepository,
+    private val naverReactiveRepository: NaverRealtimeSearchRepository,
 ) {
     @Nested
     inner class Search() {

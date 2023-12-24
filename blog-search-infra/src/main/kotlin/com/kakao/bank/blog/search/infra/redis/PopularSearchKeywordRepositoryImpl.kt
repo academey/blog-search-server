@@ -24,7 +24,7 @@ class PopularSearchKeywordRepositoryImpl(
         }.collect(Collectors.toList())
     }
 
-    override suspend fun update(keyword: String) {
+    override fun update(keyword: String) {
         val score = 0.0
         redisTemplate.opsForZSet().incrementScore(POPULAR_SEARCH_REDIS_KEY, keyword, 1.0)
         redisTemplate.opsForZSet().incrementScore(POPULAR_SEARCH_REDIS_KEY, keyword, score)

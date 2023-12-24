@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.reactive.function.client.awaitBody
 
 @Repository
-class KakaoReactiveRepository(
+class KakaoRealtimeSearchRepository(
     private val kakaoWebClient: WebClient,
 ) : RealtimeSearchRepository {
     enum class Sort {
@@ -31,7 +31,7 @@ class KakaoReactiveRepository(
     @CircuitBreaker(name = "alertService:notify", fallbackMethod = "fallback")
     override suspend fun search(
         keyword: String,
-        sort: Sorting,
+        sorting: Sorting,
         page: Int,
         size: Int,
     ): List<Blog> =
@@ -39,7 +39,7 @@ class KakaoReactiveRepository(
             .uri { uriBuilder ->
                 uriBuilder.path("/v2/search/blog")
                     .queryParam("query", keyword)
-                    .queryParam("sort", Sort.of(sort))
+                    .queryParam("sort", Sort.of(sorting))
                     .queryParam("page", page)
                     .queryParam("size", size)
                     .build()
