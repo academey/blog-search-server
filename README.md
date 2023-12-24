@@ -1,3 +1,8 @@
+# 0. Executable jar 
+[[구글 드라이브 다운로드 링크]](https://drive.google.com/file/d/1l1wtDlMMZhYpycNULV_dA7itknUVPgD5/view?usp=sharing)
+
+실행 방법 : java -jar blog-search-api.jar
+
 # 1. 시스템 아키텍처에 대한 설명
 캐시 -> 디비 -> 리얼타임의 우선순위로 요청하고 갱신하도록 되어 있습니다.
 
