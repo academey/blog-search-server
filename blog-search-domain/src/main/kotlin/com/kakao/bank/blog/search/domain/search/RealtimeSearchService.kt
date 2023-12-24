@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class RealtimeSearchService(
-    private val searchRepositories: List<RealtimeSearchRepository>,
+    private val realtimeSearchRepositories: List<RealtimeSearchRepository>,
 ) {
     fun search(
         keyword: String,
@@ -16,13 +16,18 @@ class RealtimeSearchService(
         pageable: Pageable,
     ): List<Blog> =
         runBlocking {
-            searchRepositories.sortedBy { it.getPriority() }.forEach { searchRepository ->
-                return@runBlocking searchRepository.search(
-                    keyword = keyword,
-                    sort = sort,
-                    page = pageable.pageNumber,
-                    size = pageable.pageSize,
-                )
+            realtimeSearchRepositories.sortedBy { it.getPriority() }.forEach { searchRepository ->
+                runCatching {
+                    return@runBlocking searchRepository.search(
+                        keyword = keyword,
+                        sort = sort,
+                        page = pageable.pageNumber,
+                        size = pageable.pageSize,
+                    )
+                }.onFailure { e ->
+                    // TODO: RealtimeSearchRepository 에서 실패할 경우 서킷브레이커를 넣어서 요청하지 않도록 개선
+                    println("search error is $e")
+                }
             }
             throw CustomExceptions.ApiException("둘다 실패")
         }

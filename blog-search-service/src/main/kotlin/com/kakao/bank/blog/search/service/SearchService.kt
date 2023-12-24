@@ -28,12 +28,11 @@ class SearchService(
     ): List<Blog> =
         runBlocking(Dispatchers.IO) {
             launch {
-                println("thread name ${Thread.currentThread().name} ${LocalDateTime.now()}")
-                println("popularSearchKeywordRepository.update(keyword)")
+                println("thread name ${Thread.currentThread().name} ${LocalDateTime.now()} popularSearchKeywordRepository.update(keyword)")
                 popularSearchKeywordRepository.update(keyword)
             }
 
-            // 해당 부분을 Cachable 로 빼내고 싶었지만 object 를 serialize 하는 과정을 실패했다.
+            // TODO 해당 부분을 Cachable 로 빼내고 싶었지만 object 를 serialize 하는 과정을 실패했다.
             // 추후에는 Cachable로 AOP를 개선하자
             val redisBlogList =
                 redisSearchService.get(
@@ -88,7 +87,6 @@ class SearchService(
                     realtimeBlogList,
                 )
             }
-            println("return")
             realtimeBlogList
         }
 
